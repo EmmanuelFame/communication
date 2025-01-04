@@ -60,10 +60,39 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
+        
+  .snowflake {
+    position: absolute;
+    color: white;
+    font-size: 1.5em;
+    animation: fall linear infinite;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px) rotate(0); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Snowflakes -->
+ <div class="snowflake" style="left: 10%; animation-duration: 6s;">❄</div>
+ <div class="snowflake" style="left: 30%; animation-duration: 5s;">❄</div>
+ <div class="snowflake" style="left: 50%; animation-duration: 7s;">❄</div>
+ <div class="snowflake" style="left: 70%; animation-duration: 4.5s;">❄</div>
+ <div class="snowflake" style="left: 90%; animation-duration: 6.5s;">❄</div>
+
         <h1>Communication Skills</h1>
         <h2>New Year Gifts 2025.</h2>
         <h3>Communication is the gateway to connection</h3>
@@ -81,5 +110,30 @@
         </div>
         <p>©2025. Emmanuel's book sharing page</p>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+<script>
+    function launchConfetti() {
+        confetti({
+            particleCount: 110,
+            spread: 80,
+            origin: {
+                x: Math.random(),
+                y: Math.random() * 0.5,
+            },
+            colors: ['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#ffff00'],
+        });
+    }
+
+    // Example loop for confetti
+    setInterval(launchConfetti, 4000);
+</script>
+<script>
+    const snowflakes = document.querySelectorAll('.snowflake');
+    snowflakes.forEach(flake => {
+        flake.style.top = `${-100 - Math.random() * 100}px`;
+        flake.style.fontSize = `${Math.random() * 1.5 + 1}em`;
+        flake.style.animationDelay = `${Math.random() * 3}s`;
+    });
+</script>
 </body>
 </html>
